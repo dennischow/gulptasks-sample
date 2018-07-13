@@ -22,7 +22,7 @@ global.distDir = './dist/';
 
 global.server = {
     host: 'localhost',
-    port: '8001'
+    port: '8000'
 };
 
 global.sourceStyle = [
