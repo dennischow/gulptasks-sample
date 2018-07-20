@@ -17,10 +17,10 @@ gulp.task('connect', function () {
     return browserSync.init({
         port: gulpConfig.server.port,
         server: {
-            baseDir: './',
+            baseDir: gulpConfig.projectDir,
             directory: false
         },
-        startPath: 'dist/',
+        startPath: '/',
         browser: [
             'google chrome'
         ],

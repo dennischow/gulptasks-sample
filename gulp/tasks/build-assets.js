@@ -15,6 +15,6 @@ const gulpConfig = require('./../gulp.config');
 gulp.task('build-assets', function (callback) {
     let copyFonts = gulp.src(gulpConfig.sourceAssets.fonts)
         .pipe(plumber({errorHandler: onError}))
-        .pipe(gulp.dest(gulpConfig.distDir+'assets/fonts/'));
+        .pipe(gulp.dest(gulpConfig.projectDir+'assets/fonts/'));
     return mergeStream(copyFonts);
 });

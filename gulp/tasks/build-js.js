@@ -40,7 +40,7 @@ gulp.task('build-js:vendor', function () {
         .pipe( gulpif(argv.prod, uglify()) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(gulpConfig.distDir+'assets/js/'))
+        .pipe(gulp.dest(gulpConfig.projectDir+'assets/js/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',
@@ -62,7 +62,7 @@ gulp.task('build-js:internal', function () {
         .pipe( gulpif(argv.prod, uglify()) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(gulpConfig.distDir+'assets/js/'))
+        .pipe(gulp.dest(gulpConfig.projectDir+'assets/js/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',

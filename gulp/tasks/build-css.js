@@ -34,7 +34,7 @@ gulp.task('build-css', function () {
         .pipe( gulpif(argv.prod, cleanCSS({level: {1: {all: true}, 2: {all: true}}})) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(gulpConfig.distDir+'assets/css/'))
+        .pipe(gulp.dest(gulpConfig.projectDir+'assets/css/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',

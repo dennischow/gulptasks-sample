@@ -31,17 +31,17 @@ gulp.task('build-html', function (callback) {
 gulp.task('build-html:views', function () {
     return gulp.src(gulpConfig.sourceHtml.views)
         .pipe(plumber({errorHandler: onError}))
-        .pipe( gulpif(!argv.prod, changed(gulpConfig.distDir, {extension: '.html'})) )
+        .pipe( gulpif(!argv.prod, changed(gulpConfig.projectDir, {extension: '.html'})) )
         .pipe(nunjucks.compile())
         .pipe(rename({extname: '.html'}))
-        .pipe(gulp.dest(gulpConfig.distDir))
+        .pipe(gulp.dest(gulpConfig.projectDir))
         .pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('build-html:tmpl', function () {
     return gulp.src(gulpConfig.sourceHtml.tmpl)
         .pipe(plumber({errorHandler: onError}))
-        .pipe( gulpif(!argv.prod, changed(gulpConfig.distDir+'assets/tmpl/', {extension: '.html'})) )
+        .pipe( gulpif(!argv.prod, changed(gulpConfig.projectDir+'assets/tmpl/', {extension: '.html'})) )
         .pipe(nunjucks.compile())
         .pipe( gulpif(argv.prod, htmlmin({
             collapseWhitespace: true,
@@ -55,6 +55,6 @@ gulp.task('build-html:tmpl', function () {
             minifyJS: true
         })) )
         .pipe(rename({extname: '.html'}))
-        .pipe(gulp.dest(gulpConfig.distDir+'assets/tmpl/'))
+        .pipe(gulp.dest(gulpConfig.projectDir+'assets/tmpl/'))
         .pipe(browserSync.stream({once: true}));
 });

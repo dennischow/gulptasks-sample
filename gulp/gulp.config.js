@@ -3,8 +3,11 @@
 const gulp        = require('gulp');
 const argv        = require('yargs').argv;
 
+const projectName = argv.projectName || '';
+
 module.exports = {
-    distDir: './dist/' + (argv.projectName || ''),
+    distDir: './dist/',
+    projectDir: './dist/' + projectName + '/',
     server: {
         host: 'localhost',
         port: '8000'
