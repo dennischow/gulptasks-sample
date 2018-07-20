@@ -17,6 +17,9 @@ const uglify      = require('gulp-uglify');
 const jsValidate  = require('gulp-jsvalidate');
 const babel       = require('gulp-babel');
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 /****************************************
  * [Javascript] Build
  ****************************************/
@@ -29,7 +32,7 @@ gulp.task('build-js', function (callback) {
 });
 
 gulp.task('build-js:vendor', function () {
-    return gulp.src( sourceScript.vendor )
+    return gulp.src( gulpConfig.sourceScript.vendor )
         .pipe(plumber({errorHandler: onError}))
         .pipe( gulpif(!argv.prod, sourcemaps.init({largeFile: true})) )
         .pipe(jsValidate())
@@ -37,7 +40,7 @@ gulp.task('build-js:vendor', function () {
         .pipe( gulpif(argv.prod, uglify()) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(distDir+'assets/js/'))
+        .pipe(gulp.dest(gulpConfig.distDir+'assets/js/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',
@@ -47,7 +50,7 @@ gulp.task('build-js:vendor', function () {
 });
 
 gulp.task('build-js:internal', function () {
-    return gulp.src( sourceScript.internal )
+    return gulp.src( gulpConfig.sourceScript.internal )
         .pipe(plumber({errorHandler: onError}))
         .pipe( gulpif(!argv.prod, sourcemaps.init({largeFile: true})) )
         .pipe(babel({
@@ -59,7 +62,7 @@ gulp.task('build-js:internal', function () {
         .pipe( gulpif(argv.prod, uglify()) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(distDir+'assets/js/'))
+        .pipe(gulp.dest(gulpConfig.distDir+'assets/js/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',

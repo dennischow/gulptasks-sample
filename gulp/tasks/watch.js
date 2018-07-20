@@ -2,20 +2,23 @@
 
 const gulp = require('gulp');
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 /****************************************
  * [Watch]
  ****************************************/
 gulp.task('watch', function () {
     gulp.watch([
-        './src/views/njk/**/*.+(html|nunjucks)'
+        gulpConfig.watch.sourceHtml.views
     ], ['build-html:views']);
     gulp.watch([
-        './src/assets/tmpl/**/*.+(html|nunjucks)'
+        gulpConfig.watch.sourceHtml.tmpl
     ], ['build-html:tmpl']);
     gulp.watch([
-        './src/assets/less/**/*.less'
+        gulpConfig.watch.sourceStyle
     ], ['build-css']);
     gulp.watch([
-        './src/assets/js/**/*.js'
+        gulpConfig.watch.sourceScript.internal
     ], ['build-js:internal']);
 });

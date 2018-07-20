@@ -15,11 +15,14 @@ const less         = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 /****************************************
  * [Style] Build
  ****************************************/
 gulp.task('build-css', function () {
-    return gulp.src( sourceStyle )
+    return gulp.src( gulpConfig.sourceStyle )
         .pipe(plumber({errorHandler: onError}))
         .pipe( gulpif(!argv.prod, sourcemaps.init({largeFile: true})) )
         .pipe(less())
@@ -31,7 +34,7 @@ gulp.task('build-css', function () {
         .pipe( gulpif(argv.prod, cleanCSS({level: {1: {all: true}, 2: {all: true}}})) )
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(distDir+'assets/css/'))
+        .pipe(gulp.dest(gulpConfig.distDir+'assets/css/'))
         .pipe(notify({
             onLast: true,
             title: 'Success!',

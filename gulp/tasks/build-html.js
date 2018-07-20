@@ -14,6 +14,9 @@ const changed     = require('gulp-changed');
 const nunjucks    = require('gulp-nunjucks');
 const htmlmin     = require('gulp-htmlmin');
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 /****************************************
  * [HTML] Build
  ****************************************/
@@ -26,19 +29,19 @@ gulp.task('build-html', function (callback) {
 });
 
 gulp.task('build-html:views', function () {
-    return gulp.src(sourceHtml.views)
+    return gulp.src(gulpConfig.sourceHtml.views)
         .pipe(plumber({errorHandler: onError}))
-        .pipe( gulpif(!argv.prod, changed(distDir, {extension: '.html'})) )
+        .pipe( gulpif(!argv.prod, changed(gulpConfig.distDir, {extension: '.html'})) )
         .pipe(nunjucks.compile())
         .pipe(rename({extname: '.html'}))
-        .pipe(gulp.dest(distDir))
+        .pipe(gulp.dest(gulpConfig.distDir))
         .pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('build-html:tmpl', function () {
-    return gulp.src(sourceHtml.tmpl)
+    return gulp.src(gulpConfig.sourceHtml.tmpl)
         .pipe(plumber({errorHandler: onError}))
-        .pipe( gulpif(!argv.prod, changed(distDir+'assets/tmpl/', {extension: '.html'})) )
+        .pipe( gulpif(!argv.prod, changed(gulpConfig.distDir+'assets/tmpl/', {extension: '.html'})) )
         .pipe(nunjucks.compile())
         .pipe( gulpif(argv.prod, htmlmin({
             collapseWhitespace: true,
@@ -52,6 +55,6 @@ gulp.task('build-html:tmpl', function () {
             minifyJS: true
         })) )
         .pipe(rename({extname: '.html'}))
-        .pipe(gulp.dest(distDir+'assets/tmpl/'))
+        .pipe(gulp.dest(gulpConfig.distDir+'assets/tmpl/'))
         .pipe(browserSync.stream({once: true}));
 });

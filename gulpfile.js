@@ -18,35 +18,35 @@ requireDir('./gulp/tasks');
 /****************************************
  * [Global Config]
  ****************************************/
-global.distDir = './dist/';
+// global.distDir = './dist/';
 
-global.server = {
-    host: 'localhost',
-    port: '8000'
-};
+// global.server = {
+//     host: 'localhost',
+//     port: '8000'
+// };
 
-global.sourceStyle = [
-    './src/assets/less/app.less'
-];
+// global.sourceStyle = [
+//     './src/assets/less/app.less'
+// ];
 
-global.sourceScript = {
-    vendor: [
-        './node_modules/jquery/dist/jquery.js',
-        './node_modules/angular/angular.js',
-    ],
-    internal: [
-        './src/assets/js/**/*.js'
-    ]
-};
+// global.sourceScript = {
+//     vendor: [
+//         './node_modules/jquery/dist/jquery.js',
+//         './node_modules/angular/angular.js',
+//     ],
+//     internal: [
+//         './src/assets/js/**/*.js'
+//     ]
+// };
 
-global.sourceAssets = {
-    fonts: ['./src/assets/fonts/**/*']
-};
+// global.sourceAssets = {
+//     fonts: ['./src/assets/fonts/**/*']
+// };
 
-global.sourceHtml = {
-    views: ['./src/views/njk/*.+(html|nunjucks)'],
-    tmpl: ['./src/assets/tmpl/*.+(html|nunjucks)']
-};
+// global.sourceHtml = {
+//     views: ['./src/views/njk/*.+(html|nunjucks)'],
+//     tmpl: ['./src/assets/tmpl/*.+(html|nunjucks)']
+// };
 
 /****************************************
  * [Global Callback Function]

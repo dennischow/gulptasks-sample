@@ -5,6 +5,9 @@ const gulp        = require('gulp');
 /** Server and Browser **/
 const browserSync = require('browser-sync').create();
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 global.browserSync = browserSync;
 
 /****************************************
@@ -12,7 +15,7 @@ global.browserSync = browserSync;
  ****************************************/
 gulp.task('connect', function () {
     return browserSync.init({
-        port: server.port,
+        port: gulpConfig.server.port,
         server: {
             baseDir: './',
             directory: false

@@ -6,11 +6,14 @@ const gulp    = require('gulp');
 const clean   = require('gulp-clean');
 const plumber = require('gulp-plumber');
 
+/** Gulp Config */
+const gulpConfig = require('./../gulp.config');
+
 /****************************************
- * [Clean + Dist folder]
+ * [Clean dist folder]
  ****************************************/
 gulp.task('clean', function () {
-    return gulp.src(distDir, {read: false})
+    return gulp.src(gulpConfig.distDir, {read: false})
         .pipe(plumber({errorHandler: onError}))
         .pipe(clean());
 });
